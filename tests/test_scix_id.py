@@ -138,3 +138,22 @@ class TestSciXIDImplementation(TestCase):
         scix_id = scixid.generate_scix_id(json.dumps(test_bib_data), hash_data_type="other")
         self.assertNotEqual(scix_id, "3DV1-K5S7-XR8W")
         self.assertEqual(scix_id, "4KAA-NYFK-ZK4N")
+
+    def test_two_different_titles(self):
+        test_bib_data_one = {
+            "id": 1,
+            "author": ["McTestFace, Testy", "Templeton, Matthew"],
+            "title": "Test One",
+            "abstract": ["words"],
+        }
+        test_bib_data_two = {
+            "id": 1,
+            "author": ["McTestFace, Testy", "Templeton, Matthew"],
+            "title": "Test Two",
+            "abstract": ["words"],
+        }
+        # 22WS-AZXX-BGDQ
+        scix_id_one = scixid.generate_scix_id(test_bib_data_one)
+        # AKCJ-8JNF-253E
+        scix_id_two = scixid.generate_scix_id(test_bib_data_two)
+        self.assertNotEqual(scix_id_one, scix_id_two)
