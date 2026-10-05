@@ -23,6 +23,7 @@ dependencies = [
     'avro==1.11.1',
     'unidecode==1.2.0',
     'concurrent-log-handler==0.9.29',
+    'python-json-logger==4.2.0',
 ]
 
 [project.urls]
